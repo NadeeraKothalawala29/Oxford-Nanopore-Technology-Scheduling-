@@ -1,0 +1,33 @@
+# Raw Nanopore Datasets (large binary & fastq files)
+datasets/
+*.fast5
+*.pod5
+*.fastq
+*.fastq.gz
+
+# Pipeline Output Results
+results/
+*.sam
+*.bam
+*.bai
+*.paf
+*.fasta
+*.fasta.fai
+
+# Profiling Data & Heavy Logs
+logs/
+*.data
+*.folded
+
+# External / Third-party Cloned Repositories
+scripts/FlameGraph/
+pipelines/
+
+# Nextflow & Python temporary files
+.nextflow*
+work/
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+*.swp
+*.tmp
