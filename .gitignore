@@ -14,8 +14,9 @@ results/
 *.fasta
 *.fasta.fai
 
-# Profiling Data & Heavy Logs
-logs/
+# Binary trace data & temporary folded stacks (keeps CSVs, HTML flamegraphs, txt reports, and log files)
+logs/*.data
+logs/*.folded
 *.data
 *.folded
 

@@ -1,0 +1,6 @@
+timestamp,run_tag,iteration,pipeline,stage,status,duration_sec,peak_cpu_percent,peak_rss_mb,max_threads,max_processes,unique_cores_used,total_vol_ctx,total_invol_ctx
+2026-10-31T12:24:38.272970,sched_profile,1,modular_ont,00_fast5_to_pod5,SUCCESS,8.663,1098.9,1875.57,84,11,17,165913,279
+2026-10-31T12:24:57.487510,sched_profile,1,modular_ont,02_nanoplot_qc,SUCCESS,19.213,8510.4,2101.49,138,13,55,388573,1049
+2026-10-31T12:25:58.629422,sched_profile,1,modular_ont,03_flye_denovo_assembly,SUCCESS,61.142,1624.5,8336.48,25,22,53,620911,595
+2026-10-31T12:25:59.153008,sched_profile,1,modular_ont,04_minimap2_align,SUCCESS,0.523,276.4,43.75,7,5,6,3688,0
+2026-10-31T12:25:59.465998,sched_profile,1,modular_ont,05_samtools_sort_index,SUCCESS,0.313,0.0,74.05,22,5,5,2386,2

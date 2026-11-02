@@ -1,0 +1,89 @@
+-------------------------------------------------------------------------------------------------------------------------------------------
+  Task                  |   Runtime ms  | Switches | Vol / Invol  | Migrations | Avg wait ms | Max wait ms | Max wait at (s) | Last Wchan
+-------------------------------------------------------------------------------------------------------------------------------------------
+  python3:101           |   6471.194 ms |     1740 |  1720/20     |          4 |   0.0002 ms |   0.0588 ms |        0.6504 s | userspace_on_cpu
+  python3:98            |   6314.638 ms |     1750 |  1738/12     |          0 |   0.0005 ms |   0.5606 ms |        7.0515 s | userspace_on_cpu
+  python3:99            |   6309.088 ms |     1755 |  1742/13     |          2 |   0.0001 ms |   0.0623 ms |        0.6504 s | userspace_on_cpu
+  python3:96            |   6278.644 ms |     1750 |  1737/13     |          2 |   0.0002 ms |   0.0835 ms |        0.6504 s | userspace_on_cpu
+  python3:100           |   6225.388 ms |     1745 |  1734/11     |          0 |   0.0001 ms |   0.0459 ms |        0.6635 s | userspace_on_cpu
+  python3:97            |   4631.471 ms |     1734 |  1726/8      |          0 |   0.0001 ms |   0.0757 ms |        0.6504 s | userspace_on_cpu
+  pod5:77               |   1494.672 ms |     3134 |  3124/10     |          1 |   0.0004 ms |   0.7915 ms |        7.5896 s | userspace_on_cpu
+  python3:166           |    201.116 ms |      933 |   929/4      |          0 |   0.0000 ms |   0.0117 ms |        2.6111 s | futex_wait_queue_me
+  python3:167           |    200.539 ms |     1121 |  1119/2      |          0 |   0.0002 ms |   0.1671 ms |        6.1375 s | futex_wait_queue_me
+  python3:164           |    194.831 ms |     1070 |  1068/2      |          0 |   0.0000 ms |   0.0072 ms |        6.7090 s | futex_wait_queue_me
+  python3:165           |    190.710 ms |      927 |   924/3      |          0 |   0.0000 ms |   0.0073 ms |        2.5849 s | futex_wait_queue_me
+  python3:162           |    188.922 ms |      816 |   813/3      |          0 |   0.0000 ms |   0.0159 ms |        6.0424 s | futex_wait_queue_me
+  python3:163           |    140.137 ms |      744 |   744/0      |          0 |   0.0000 ms |   0.0064 ms |        3.1865 s | futex_wait_queue_me
+  pod5:168              |     65.362 ms |      269 |   268/1      |          0 |   0.0000 ms |   0.0053 ms |        6.1375 s | futex_wait_queue_me
+  python3:93            |     23.613 ms |       94 |    94/0      |          0 |   0.0000 ms |   0.0000 ms |        0.4384 s | userspace_on_cpu
+  python3:140           |      8.403 ms |        1 |     1/0      |          1 |   0.2467 ms |   0.2385 ms |        7.0854 s | userspace_on_cpu
+  pod5:95               |      3.011 ms |      257 |   257/0      |          0 |   0.0000 ms |   0.0000 ms |        0.4384 s | futex_wait_queue_me
+  pod5:94               |      0.146 ms |        8 |     8/0      |          0 |   0.0000 ms |   0.0000 ms |        0.4384 s | futex_wait_queue_me
+  jemalloc_bg_thd:104   |      0.044 ms |        1 |     1/0      |          1 |   0.0000 ms |   0.0000 ms |        0.5675 s | futex_wait_queue_me
+  jemalloc_bg_thd:106   |      0.044 ms |        1 |     1/0      |          0 |   0.0000 ms |   0.0000 ms |        0.5675 s | futex_wait_queue_me
+  jemalloc_bg_thd:107   |      0.043 ms |        1 |     1/0      |          0 |   0.0000 ms |   0.0000 ms |        0.5675 s | futex_wait_queue_me
+  jemalloc_bg_thd:78    |      0.042 ms |        1 |     1/0      |          0 |   0.0000 ms |   0.0000 ms |        0.1314 s | futex_wait_queue_me
+  jemalloc_bg_thd:102   |      0.040 ms |        1 |     1/0      |          0 |   0.0092 ms |   0.0092 ms |        0.5675 s | futex_wait_queue_me
+  jemalloc_bg_thd:103   |      0.038 ms |        2 |     2/0      |          1 |   0.0000 ms |   0.0000 ms |        0.5675 s | futex_wait_queue_me
+  pod5:92               |      0.033 ms |        1 |     1/0      |          0 |   0.0000 ms |   0.0000 ms |        0.4384 s | futex_wait_queue_me
+  jemalloc_bg_thd:105   |      0.032 ms |        1 |     1/0      |          0 |   0.0543 ms |   0.0543 ms |        0.5675 s | futex_wait_queue_me
+  python3:154           |      0.018 ms |        1 |     1/0      |          0 |   0.0000 ms |   0.0000 ms |        0.6635 s | futex_wait_queue_me
+  python3:122           |      0.015 ms |        1 |     1/0      |          0 |   0.0000 ms |   0.0000 ms |        0.6635 s | futex_wait_queue_me
+  python3:120           |      0.015 ms |        1 |     1/0      |          0 |   0.0000 ms |   0.0000 ms |        0.6635 s | futex_wait_queue_me
+  python3:157           |      0.013 ms |        1 |     1/0      |          0 |   0.0000 ms |   0.0000 ms |        0.6635 s | futex_wait_queue_me
+  python3:116           |      0.012 ms |        1 |     1/0      |          0 |   0.0000 ms |   0.0000 ms |        0.6635 s | futex_wait_queue_me
+  pod5:83               |      0.012 ms |        1 |     1/0      |          0 |   0.0000 ms |   0.0000 ms |        0.2301 s | futex_wait_queue_me
+  python3:118           |      0.011 ms |        1 |     1/0      |          0 |   0.0000 ms |   0.0000 ms |        0.6635 s | futex_wait_queue_me
+  python3:117           |      0.011 ms |        1 |     1/0      |          0 |   0.0000 ms |   0.0000 ms |        0.6635 s | futex_wait_queue_me
+  python3:115           |      0.011 ms |        1 |     1/0      |          0 |   0.0000 ms |   0.0000 ms |        0.6635 s | futex_wait_queue_me
+  pod5:80               |      0.011 ms |        1 |     1/0      |          0 |   0.0000 ms |   0.0000 ms |        0.2301 s | futex_wait_queue_me
+  python3:124           |      0.011 ms |        1 |     1/0      |          0 |   0.0000 ms |   0.0000 ms |        0.6635 s | futex_wait_queue_me
+  python3:123           |      0.011 ms |        1 |     1/0      |          0 |   0.0000 ms |   0.0000 ms |        0.6635 s | futex_wait_queue_me
+  pod5:82               |      0.011 ms |        1 |     1/0      |          0 |   0.0000 ms |   0.0000 ms |        0.2301 s | futex_wait_queue_me
+  python3:126           |      0.011 ms |        1 |     1/0      |          0 |   0.0000 ms |   0.0000 ms |        0.6635 s | futex_wait_queue_me
+  python3:114           |      0.011 ms |        1 |     1/0      |          0 |   0.0000 ms |   0.0000 ms |        0.6635 s | futex_wait_queue_me
+  pod5:87               |      0.011 ms |        1 |     1/0      |          0 |   0.0000 ms |   0.0000 ms |        0.2301 s | futex_wait_queue_me
+  python3:128           |      0.010 ms |        1 |     1/0      |          0 |   0.0000 ms |   0.0000 ms |        0.6635 s | futex_wait_queue_me
+  python3:125           |      0.010 ms |        1 |     1/0      |          0 |   0.0000 ms |   0.0000 ms |        0.6635 s | futex_wait_queue_me
+  python3:144           |      0.010 ms |        1 |     1/0      |          0 |   0.0000 ms |   0.0000 ms |        0.6635 s | futex_wait_queue_me
+  pod5:84               |      0.010 ms |        1 |     1/0      |          0 |   0.0000 ms |   0.0000 ms |        0.2301 s | futex_wait_queue_me
+  python3:130           |      0.010 ms |        1 |     1/0      |          0 |   0.0000 ms |   0.0000 ms |        0.6635 s | futex_wait_queue_me
+  pod5:81               |      0.010 ms |        1 |     1/0      |          0 |   0.0000 ms |   0.0000 ms |        0.2301 s | futex_wait_queue_me
+  python3:127           |      0.010 ms |        1 |     1/0      |          0 |   0.0000 ms |   0.0000 ms |        0.6635 s | futex_wait_queue_me
+  python3:121           |      0.010 ms |        1 |     1/0      |          0 |   0.0000 ms |   0.0000 ms |        0.6635 s | futex_wait_queue_me
+  python3:131           |      0.009 ms |        1 |     1/0      |          0 |   0.0000 ms |   0.0000 ms |        0.6635 s | futex_wait_queue_me
+  pod5:85               |      0.009 ms |        1 |     1/0      |          0 |   0.0000 ms |   0.0000 ms |        0.2301 s | futex_wait_queue_me
+  pod5:86               |      0.009 ms |        1 |     1/0      |          0 |   0.0000 ms |   0.0000 ms |        0.2301 s | futex_wait_queue_me
+  python3:155           |      0.009 ms |        1 |     1/0      |          0 |   0.0000 ms |   0.0000 ms |        0.6635 s | futex_wait_queue_me
+  python3:129           |      0.009 ms |        1 |     1/0      |          0 |   0.0000 ms |   0.0000 ms |        0.6635 s | futex_wait_queue_me
+  python3:119           |      0.009 ms |        1 |     1/0      |          0 |   0.0000 ms |   0.0000 ms |        0.6635 s | futex_wait_queue_me
+  python3:132           |      0.009 ms |        1 |     1/0      |          0 |   0.0000 ms |   0.0000 ms |        0.6635 s | futex_wait_queue_me
+  python3:158           |      0.009 ms |        1 |     1/0      |          0 |   0.0000 ms |   0.0000 ms |        0.6635 s | futex_wait_queue_me
+  python3:142           |      0.009 ms |        1 |     1/0      |          0 |   0.0000 ms |   0.0000 ms |        0.6635 s | futex_wait_queue_me
+  python3:138           |      0.009 ms |        1 |     1/0      |          0 |   0.0000 ms |   0.0000 ms |        0.6635 s | futex_wait_queue_me
+  python3:147           |      0.009 ms |        1 |     1/0      |          0 |   0.0000 ms |   0.0000 ms |        0.6635 s | futex_wait_queue_me
+  python3:145           |      0.009 ms |        1 |     1/0      |          0 |   0.0000 ms |   0.0000 ms |        0.6635 s | futex_wait_queue_me
+  python3:134           |      0.008 ms |        1 |     1/0      |          0 |   0.0000 ms |   0.0000 ms |        0.6635 s | futex_wait_queue_me
+  python3:139           |      0.008 ms |        1 |     1/0      |          0 |   0.0010 ms |   0.0010 ms |        0.6635 s | futex_wait_queue_me
+  python3:146           |      0.008 ms |        1 |     1/0      |          0 |   0.0000 ms |   0.0000 ms |        0.6635 s | futex_wait_queue_me
+  python3:143           |      0.008 ms |        1 |     1/0      |          0 |   0.0000 ms |   0.0000 ms |        0.6635 s | futex_wait_queue_me
+  python3:161           |      0.008 ms |        1 |     1/0      |          0 |   0.0000 ms |   0.0000 ms |        0.6635 s | futex_wait_queue_me
+  python3:136           |      0.008 ms |        1 |     1/0      |          0 |   0.0000 ms |   0.0000 ms |        0.6635 s | futex_wait_queue_me
+  python3:133           |      0.008 ms |        1 |     1/0      |          0 |   0.0000 ms |   0.0000 ms |        0.6635 s | futex_wait_queue_me
+  python3:150           |      0.008 ms |        1 |     1/0      |          0 |   0.0000 ms |   0.0000 ms |        0.6635 s | futex_wait_queue_me
+  python3:156           |      0.008 ms |        1 |     1/0      |          0 |   0.0000 ms |   0.0000 ms |        0.6635 s | futex_wait_queue_me
+  python3:137           |      0.008 ms |        1 |     1/0      |          0 |   0.0000 ms |   0.0000 ms |        0.6635 s | futex_wait_queue_me
+  python3:148           |      0.008 ms |        1 |     1/0      |          0 |   0.0000 ms |   0.0000 ms |        0.6635 s | futex_wait_queue_me
+  python3:160           |      0.008 ms |        1 |     1/0      |          0 |   0.0000 ms |   0.0000 ms |        0.6635 s | futex_wait_queue_me
+  python3:152           |      0.008 ms |        1 |     1/0      |          0 |   0.0000 ms |   0.0000 ms |        0.6635 s | futex_wait_queue_me
+  python3:149           |      0.008 ms |        1 |     1/0      |          0 |   0.0000 ms |   0.0000 ms |        0.6635 s | futex_wait_queue_me
+  python3:151           |      0.008 ms |        1 |     1/0      |          0 |   0.0000 ms |   0.0000 ms |        0.6635 s | futex_wait_queue_me
+  python3:153           |      0.008 ms |        1 |     1/0      |          0 |   0.0000 ms |   0.0000 ms |        0.6635 s | futex_wait_queue_me
+  python3:159           |      0.008 ms |        1 |     1/0      |          0 |   0.0000 ms |   0.0000 ms |        0.6635 s | futex_wait_queue_me
+  python3:141           |      0.007 ms |        1 |     1/0      |          0 |   0.0000 ms |   0.0000 ms |        0.6635 s | futex_wait_queue_me
+  python3:135           |      0.007 ms |        1 |     1/0      |          0 |   0.0000 ms |   0.0000 ms |        0.6635 s | futex_wait_queue_me
+-------------------------------------------------------------------------------------------------------------------------------------------
+  TOTAL ( 81 threads)   |  38942.734 ms |    19912 | 19810/102    |         12 |
+-------------------------------------------------------------------------------------------------------------------------------------------
+  Command: bash -c pod5 convert fast5 /home/g21_nadeera/fyp-nanopore-os-benchmark/datasets/fast5 --output /home/g21_nadeera/fyp-nanopore-os-benchmark/results/sched_profile/iter_1/pod5_converted/converted.pod5 --threads 16 --recursive --force-overwrite
+  Wall-clock Duration: 7.595 s
