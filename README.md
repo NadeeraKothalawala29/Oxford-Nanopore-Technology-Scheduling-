@@ -7,10 +7,10 @@ Fourth-Year Project (FYP) investigating Linux kernel OS scheduling behavior, thr
 ## 1. System & Hardware Topology
 
 - **Server Architecture**: Dual-socket Intel(R) Xeon(R) Gold 6342 CPU @ 2.80GHz
-- **CPU Cores & Threads**: 48 physical cores / 96 hardware threads total (24 cores / 48 threads per socket)
+- **CPU Cores & Threads**: 48 physical cores / 96 hardware threads total (24 cores / 48 threads per socket; CPUs `0-93` online in container)
 - **NUMA Nodes**:
-  - **NUMA Node 0**: CPUs `0,2,4,6,8,10,12,14...92` + 50% system RAM
-  - **NUMA Node 1**: CPUs `1,3,5,7,9,11,13,15...93` + 50% system RAM
+  - **NUMA Node 0**: Even CPUs (`0,2,4,6,8,10,12,14...92`) + 50% system RAM
+  - **NUMA Node 1**: Odd CPUs (`1,3,5,7,9,11,13,15...93`) + 50% system RAM
 - **GPU Accelerator**: NVIDIA A16 (4 GPU instances of compute capability 8.6, 15 GB VRAM each)
 - **Environment**: Proxmox LXC Container (`5.15.108-1-pve`), Ubuntu 22.04 LTS
 
@@ -19,21 +19,29 @@ Fourth-Year Project (FYP) investigating Linux kernel OS scheduling behavior, thr
 ## 2. Repository Structure
 
 ```text
-├── Academic/               # Academic materials, rubrics, presentations, notes
-│   ├── assessment/         # Assessment rubrics (CO421)
-│   └── Presentations/      # Presentation slides and project proposals
-├── scripts/                # Benchmark runner, GPU wrappers, and scheduler profiling scripts
-│   ├── benchmark_runner.py # Multi-stage ONT pipeline benchmark runner & telemetry logger
-│   ├── run_exp1.sh         # Isolated baseline benchmark runner script (Experiment 1)
-│   ├── run_dorado_stage.sh # Standalone Dorado basecaller client/server GPU wrapper
-│   └── trace_scheduler.sh  # Kernel scheduler event tracer & FlameGraph generator wrapper
-├── logs/                   # Benchmark telemetry, summary CSVs, latency reports & FlameGraphs
-│   ├── summary_*.csv       # Per-stage high-level execution summaries
-│   ├── timeseries_*.csv    # 100-250 Hz CPU, RAM, threads, and context switch telemetry
-│   ├── *_latency_report.txt# Thread-level CFS scheduler wait time, switch, and migration reports
-│   └── *_sched_profile.html# Interactive HTML FlameGraphs of OS scheduler states & wait channels
-├── .gitignore              # Excludes heavy raw datasets, BAM/FASTQ outputs, and raw trace data
-└── README.md               # Daily research log, pipeline documentation, and quick start guide
+├── Academic/                              # Academic materials, rubrics, presentations, notes
+│   ├── assessment/                        # Assessment rubrics (CO421)
+│   └── Presentations/                     # Presentation slides and project proposals
+├── scripts/                               # Benchmark runner, GPU wrappers, and scheduler profiling scripts
+│   ├── benchmark_runner.py                # Multi-stage ONT pipeline benchmark runner & telemetry logger
+│   ├── run_exp1.sh                        # Isolated baseline benchmark runner script (Experiment 1)
+│   ├── run_dorado_stage.sh                # Standalone Dorado basecaller client/server GPU wrapper
+│   ├── trace_scheduler.sh                 # Kernel scheduler event tracer & FlameGraph generator wrapper
+│   ├── unpinned_scheduler_profiler.py     # Unprivileged /proc + numa_maps 200ms scheduler & NUMA profiler
+│   └── run_unpinned_baseline.sh           # Pure unpinned default pipeline runner & telemetry wrapper
+├── logs/                                  # Benchmark telemetry, summary CSVs, latency reports & FlameGraphs
+│   ├── unpinned_baseline/                 # Pure unpinned OS scheduler & NUMA telemetry outputs
+│   │   ├── timeseries_scheduler_numa.csv  # 200ms time-series of thread states, migrations & NUMA pages
+│   │   ├── stage_scheduler_summary.csv    # Per-stage summary of all 6 scheduling & NUMA categories
+│   │   ├── stage_scheduler_summary.json   # Detailed JSON telemetry & timeline per stage
+│   │   ├── core_heatmap_distribution.csv  # Per-core (0-93) execution hit distribution across stages
+│   │   └── unpinned_scheduler_dashboard.html # Self-contained interactive Plotly HTML report
+│   ├── summary_*.csv                      # Per-stage high-level execution summaries
+│   ├── timeseries_*.csv                   # 100-250 Hz CPU, RAM, threads, and context switch telemetry
+│   ├── *_latency_report.txt               # Thread-level CFS scheduler wait time, switch, and migration reports
+│   └── *_sched_profile.html               # Interactive HTML FlameGraphs of OS scheduler states & wait channels
+├── .gitignore                             # Excludes heavy raw datasets, BAM/FASTQ outputs, and raw trace data
+└── README.md                              # Daily research log, pipeline documentation, and quick start guide
 ```
 
 ---
@@ -63,17 +71,34 @@ Fourth-Year Project (FYP) investigating Linux kernel OS scheduling behavior, thr
 
 ---
 
-### 📅 Day 3: November 2, 2026 — NUMA Analysis Feasibility, Repository Initialization & GitHub Sync
+### 📅 Day 3: November 2, 2026 — Pure Unpinned Baseline Scheduler & NUMA Telemetry Profiling
 - **NUMA & Hardware PMU Feasibility Analysis**:
   - Confirmed hardware memory stall cycles (`CYCLE_ACTIVITY.STALLS_MEM_ANY`) and cache misses require host admin/sudo permissions (`perf_event_paranoid <= 1` or `CAP_PERFMON`).
-  - Verified that thread concurrency, core pinning (`taskset`), CPU migrations, and page-level NUMA memory allocation (`/proc/<pid>/numa_maps`) are fully accessible without sudo.
-- **GitHub Repository Synchronization**:
-  - Linked workspace to `git@github.com:NadeeraKothalawala29/Oxford-Nanopore-Technology-Scheduling-.git` via ED25519 SSH authentication.
-  - Cleaned `.gitignore` to track all benchmark source scripts, academic documents, and analysis logs (`.csv`, `.html`, `.txt`) while excluding heavy multi-gigabyte raw reads and binary trace dumps (`*.data`).
+  - Verified that thread concurrency, core pinning (`taskset`), CPU migrations, and page-level NUMA memory allocation (`/proc/<pid>/numa_maps`) are 100% accessible in user space without sudo.
+- **Pure Unpinned Baseline Profiler (`scripts/unpinned_scheduler_profiler.py` & `scripts/run_unpinned_baseline.sh`)**:
+  - Executed the full 6-stage Nanopore pipeline in its pure, default unpinned state (`Cpus_allowed_list: 0-93`, `Mems_allowed_list: 0-1`, no `taskset`/`numactl`/custom thread flags).
+  - Sampled `/proc/<pid>/task/<tid>/{stat,status}` every 200ms and `/proc/<pid>/numa_maps` every 2s across all child processes and threads, generating `logs/unpinned_baseline/unpinned_scheduler_dashboard.html`.
+- **Key Unpinned Baseline Findings**:
+  - **Thread Oversubscription & Futex Contention (`02_nanoplot_qc`)**: Without thread limits, OpenBLAS/Python spawned **989 threads** (up to 135 alive concurrently) across all **94 online cores (`0-93`)**, resulting in **206 core migrations**, **64 cross-NUMA socket bounces (31.1%)**, and **82.6% sequential bottleneck time** (average 97.5 sleeping threads waiting on locks).
+  - **Cross-NUMA Memory Mismatch (`01_dorado_basecall` & `02_nanoplot_qc`)**: Dorado allocated **61.7% of RAM pages on NUMA Node 0** and **38.3% on NUMA Node 1**, while 88.9% of CPU execution occurred on Node 0, yielding an estimated **40.9% cross-socket remote memory access rate** (`33.8%` in NanoPlot).
+  - **Default Single-Thread Bottlenecks (`03_flye_denovo_assembly` & `05_samtools_sort_index`)**: When invoked without explicit thread flags, Flye and Samtools default to single-threaded execution (`100%` sequential time), whereas `pod5` (`80.6%` parallel) and `dorado` (`60.6%` parallel) automatically spawn multi-threaded worker pools.
 
 ---
 
 ## 4. Benchmark Summary Metrics
+
+### 4.1 Pure Unpinned Baseline (`/proc` + `numa_maps` Telemetry)
+
+| Stage | Duration (s) | Spawned Threads | Active Cores | Parallel / Seq (%) | Core Migrations (Cross-NUMA) | Context Switches (Vol / Invol) | NUMA Mem Pages (N0 / N1 %) | Est. Remote NUMA Access |
+| :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| **00_fast5_to_pod5** | 13.30s | 59 | 31 / 94 | 80.6% / 19.4% | 6 (0) | 8,186 / 93 | 94.2% / 5.8% | 5.8% |
+| **01_dorado_basecall** | 52.70s | 114 | 72 / 94 | 60.6% / 39.4% | 201 (6) | 6,459,292 / 332 | 61.7% / 38.3% | **40.9%** |
+| **02_nanoplot_qc** | 17.06s | **989** | **94 / 94** | 17.4% / **82.6%** | **206 (64)** | 106,266 / 320 | 74.3% / 25.7% | **33.8%** |
+| **03_flye_denovo_assembly** | 62.26s | 44 | 23 / 94 | 0.0% / 100.0% | 9 (0) | 906 / 189 | 99.8% / 0.2% | 0.2% |
+| **04_minimap2_align** | 0.47s | 6 | 6 / 94 | 0.0% / 100.0% | 0 (0) | 11 / 1 | 62.2% / 37.8% | 37.8% |
+| **05_samtools_sort_index** | 0.50s | 2 | 2 / 94 | 0.0% / 100.0% | 0 (0) | 5 / 0 | 87.1% / 12.9% | 12.9% |
+
+### 4.2 Configured 16-Thread Run (`sched_profile` with Kernel Wait Channels)
 
 | Stage | Duration (s) | Peak CPU (%) | Peak RAM (MB) | Max Threads | Unique Cores | Key Kernel Wait Channels (`wchan`) |
 | :--- | :---: | :---: | :---: | :---: | :---: | :--- |
@@ -93,7 +118,12 @@ Fourth-Year Project (FYP) investigating Linux kernel OS scheduling behavior, thr
 conda activate ont_benchmark
 ```
 
-### Run Baseline Benchmark
+### Run Pure Unpinned Baseline & Generate `/proc` + `numa_maps` HTML Dashboard
+```bash
+bash scripts/run_unpinned_baseline.sh
+```
+
+### Run Configured Baseline Benchmark
 ```bash
 bash scripts/run_exp1.sh
 ```
@@ -109,7 +139,10 @@ python3 scripts/benchmark_runner.py \
 ```
 
 ### Inspect Output Logs
+- **Unpinned Baseline Interactive Dashboard**: `logs/unpinned_baseline/unpinned_scheduler_dashboard.html`
+- **Unpinned Stage Summary (CSV/JSON)**: `logs/unpinned_baseline/stage_scheduler_summary.csv` & `.json`
+- **Unpinned Core Heatmap Distribution**: `logs/unpinned_baseline/core_heatmap_distribution.csv`
 - **Summary Metrics**: `logs/summary_*.csv`
 - **Time-Series Telemetry**: `logs/timeseries_*.csv`
 - **Latency Reports**: `logs/*_latency_report.txt`
-- **Interactive Visualizations**: Open `logs/*_sched_profile.html` directly in any web browser.
+- **Interactive FlameGraphs**: Open `logs/*_sched_profile.html` directly in any web browser.

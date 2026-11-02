@@ -1,0 +1,15 @@
+[M::mm_idx_gen::0.001*1.99] collected minimizers
+[M::mm_idx_gen::0.001*2.03] sorted minimizers
+[M::main::0.001*2.01] loaded/built the index for 1 target sequence(s)
+[M::mm_mapopt_update::0.002*1.96] mid_occ = 10
+[M::mm_idx_stat] kmer size: 15; skip: 10; is_hpc: 0; #seq: 1
+[M::mm_idx_stat::0.002*1.93] distinct minimizers: 651 (100.00% are singletons); average occurrences: 1.000; average spacing: 5.435; total length: 3538
+[M::worker_pipeline::0.079*1.64] mapped 4000 sequences
+[M::worker_pipeline::0.157*1.65] mapped 4000 sequences
+[M::worker_pipeline::0.232*1.65] mapped 4000 sequences
+[M::worker_pipeline::0.315*1.66] mapped 4000 sequences
+[M::worker_pipeline::0.407*1.68] mapped 4000 sequences
+[M::worker_pipeline::0.467*1.68] mapped 2890 sequences
+[M::main] Version: 2.31-r1302
+[M::main] CMD: minimap2 -ax map-ont /home/g21_nadeera/fyp-nanopore-os-benchmark/results/unpinned_baseline/flye_assembly/assembly.fasta /home/g21_nadeera/fyp-nanopore-os-benchmark/datasets/fastq/FAX38735_pass_0b607977_50b67caa_0.fastq.gz /home/g21_nadeera/fyp-nanopore-os-benchmark/datasets/fastq/FAX38735_pass_0b607977_50b67caa_1.fastq.gz /home/g21_nadeera/fyp-nanopore-os-benchmark/datasets/fastq/FAX38735_pass_0b607977_50b67caa_2.fastq.gz /home/g21_nadeera/fyp-nanopore-os-benchmark/datasets/fastq/FAX38735_pass_0b607977_50b67caa_3.fastq.gz /home/g21_nadeera/fyp-nanopore-os-benchmark/datasets/fastq/FAX38735_pass_0b607977_50b67caa_4.fastq.gz /home/g21_nadeera/fyp-nanopore-os-benchmark/datasets/fastq/FAX38735_pass_0b607977_50b67caa_5.fastq.gz
+[M::main] Real time: 0.467 sec; CPU: 0.782 sec; Peak RSS: 0.022 GB

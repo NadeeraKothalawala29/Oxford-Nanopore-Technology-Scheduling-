@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Unpinned Nanopore OS Scheduler & NUMA Telemetry Dashboard</title>
+    <script src="https://cdn.plot.ly/plotly-2.32.0.min.js"></script>
+    <style>
+        :root {
+            --bg: #0f172a;
+            --card: #1e293b;
+            --text: #f8fafc;
+            --muted: #94a3b8;
+            --accent: #38bdf8;
+            --border: #334155;
+        }
+        body {
+            margin: 0;
+            padding: 24px;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+        }
+        h1 { margin: 0 0 8px 0; font-size: 24px; color: var(--accent); }
+        .subtitle { color: var(--muted); margin-bottom: 24px; font-size: 14px; }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-bottom: 24px;
+        }
+        .card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 16px;
+        }
+        .card-full {
+            grid-column: 1 / -1;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+        }
+        th, td {
+            border-bottom: 1px solid var(--border);
+            padding: 10px 8px;
+            text-align: left;
+        }
+        th { color: var(--accent); font-weight: 600; background: #0f172a; }
+        .badge-ok {
+            background: rgba(34, 197, 94, 0.2);
+            color: #4ade80;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+        code {
+            background: #0f172a;
+            padding: 2px 5px;
+            border-radius: 4px;
+            color: #fbbf24;
+        }
+    </style>
+</head>
+<body>
+    <h1>Unpinned Baseline: Linux CFS Scheduler & NUMA Telemetry Report</h1>
+    <div class="subtitle">
+        Hardware: Dual-Socket Intel Xeon Gold 6342 (94 Online Threads: 0-93 | NUMA Node 0 = Even CPUs, NUMA Node 1 = Odd CPUs) + NVIDIA A16 GPU<br>
+        Configuration: Pure Default Unpinned State (<code>Cpus_allowed_list: 0-93</code>, <code>Mems_allowed_list: 0-1</code>, Native Tool Thread Defaults, 200ms /proc Sampling)
+    </div>
+
+    <div class="card card-full" style="margin-bottom: 20px; overflow-x: auto;">
+        <h3 style="margin-top:0;">Stage-by-Stage OS Scheduler & NUMA Summary</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Stage</th>
+                    <th>Status</th>
+                    <th>Duration</th>
+                    <th>Spawned Threads</th>
+                    <th>Seq % / Parallel %</th>
+                    <th>Avg Running Threads</th>
+                    <th>Core Migrations</th>
+                    <th>Cross-NUMA Bounces</th>
+                    <th>Context Switches (Vol / Invol)</th>
+                    <th>NUMA RAM Pages (N0 / N1)</th>
+                    <th>NUMA CPU Exec (N0 / N1)</th>
+                    <th>Est. Remote Mem Access</th>
+                    <th>Affinity Masks</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+        <tr>
+            <td><strong>00_fast5_to_pod5</strong></td>
+            <td><span class="badge-ok">SUCCESS</span></td>
+            <td>13.30s</td>
+            <td>59 (31 cores)</td>
+            <td>19.4% / <strong>80.6%</strong></td>
+            <td>2.85 (peak 6)</td>
+            <td>6</td>
+            <td><strong>0</strong> (0.0%)</td>
+            <td>8,186 / 93</td>
+            <td>94.2% / 5.8%</td>
+            <td>100.0% / 0.0%</td>
+            <td><strong>5.8%</strong></td>
+            <td><code>0-93</code> | <code>0-1</code></td>
+        </tr>
+        
+        <tr>
+            <td><strong>01_dorado_basecall</strong></td>
+            <td><span class="badge-ok">SUCCESS</span></td>
+            <td>52.70s</td>
+            <td>114 (72 cores)</td>
+            <td>39.4% / <strong>60.6%</strong></td>
+            <td>1.92 (peak 8)</td>
+            <td>201</td>
+            <td><strong>6</strong> (3.0%)</td>
+            <td>6,459,292 / 332</td>
+            <td>61.7% / 38.3%</td>
+            <td>88.9% / 11.1%</td>
+            <td><strong>40.9%</strong></td>
+            <td><code>0-93</code> | <code>0-1</code></td>
+        </tr>
+        
+        <tr>
+            <td><strong>02_nanoplot_qc</strong></td>
+            <td><span class="badge-ok">SUCCESS</span></td>
+            <td>17.06s</td>
+            <td>989 (94 cores)</td>
+            <td>82.6% / <strong>17.4%</strong></td>
+            <td>1.16 (peak 4)</td>
+            <td>206</td>
+            <td><strong>64</strong> (31.1%)</td>
+            <td>106,266 / 320</td>
+            <td>74.3% / 25.7%</td>
+            <td>83.2% / 16.8%</td>
+            <td><strong>33.8%</strong></td>
+            <td><code>0-93</code> | <code>0-1</code></td>
+        </tr>
+        
+        <tr>
+            <td><strong>03_flye_denovo_assembly</strong></td>
+            <td><span class="badge-ok">SUCCESS</span></td>
+            <td>62.26s</td>
+            <td>44 (23 cores)</td>
+            <td>100.0% / <strong>0.0%</strong></td>
+            <td>1.00 (peak 1)</td>
+            <td>9</td>
+            <td><strong>0</strong> (0.0%)</td>
+            <td>906 / 189</td>
+            <td>99.8% / 0.2%</td>
+            <td>100.0% / 0.0%</td>
+            <td><strong>0.2%</strong></td>
+            <td><code>0-93</code> | <code>0-1</code></td>
+        </tr>
+        
+        <tr>
+            <td><strong>04_minimap2_align</strong></td>
+            <td><span class="badge-ok">SUCCESS</span></td>
+            <td>0.47s</td>
+            <td>6 (6 cores)</td>
+            <td>100.0% / <strong>0.0%</strong></td>
+            <td>1.00 (peak 1)</td>
+            <td>0</td>
+            <td><strong>0</strong> (0.0%)</td>
+            <td>11 / 1</td>
+            <td>62.2% / 37.8%</td>
+            <td>100.0% / 0.0%</td>
+            <td><strong>37.8%</strong></td>
+            <td><code>0-93</code> | <code>0-1</code></td>
+        </tr>
+        
+        <tr>
+            <td><strong>05_samtools_sort_index</strong></td>
+            <td><span class="badge-ok">SUCCESS</span></td>
+            <td>0.50s</td>
+            <td>2 (2 cores)</td>
+            <td>100.0% / <strong>0.0%</strong></td>
+            <td>0.67 (peak 1)</td>
+            <td>0</td>
+            <td><strong>0</strong> (0.0%)</td>
+            <td>5 / 0</td>
+            <td>87.1% / 12.9%</td>
+            <td>100.0% / 0.0%</td>
+            <td><strong>12.9%</strong></td>
+            <td><code>0-93</code> | <code>0-1</code></td>
+        </tr>
+        
+            </tbody>
+        </table>
+    </div>
+
+    <div class="grid">
+        <div class="card">
+            <div id="chart_seq_par" style="height: 380px;"></div>
+        </div>
+        <div class="card">
+            <div id="chart_migrations" style="height: 380px;"></div>
+        </div>
+        <div class="card">
+            <div id="chart_preemptions" style="height: 380px;"></div>
+        </div>
+        <div class="card">
+            <div id="chart_numa_mismatch" style="height: 380px;"></div>
+        </div>
+        <div class="card card-full">
+            <div id="chart_core_heatmap" style="height: 420px;"></div>
+        </div>
+    </div>
+
+    <script>
+        const stages = ["00_fast5_to_pod5", "01_dorado_basecall", "02_nanoplot_qc", "03_flye_denovo_assembly", "04_minimap2_align", "05_samtools_sort_index"];
+        const darkLayout = {
+            paper_bgcolor: '#1e293b',
+            plot_bgcolor: '#0f172a',
+            font: { color: '#f8fafc', size: 12 },
+            margin: { t: 50, l: 60, r: 30, b: 80 },
+            legend: { orientation: 'h', y: -0.22 }
+        };
+
+        // 1. Sequential vs Parallel Execution Ratio & Concurrency
+        Plotly.newPlot('chart_seq_par', [
+            { x: stages, y: [19.4, 39.39, 82.56, 100.0, 100.0, 100.0], name: 'Sequential Bottleneck (<=1 Running Thread) %', type: 'bar', marker: { color: '#f97316' } },
+            { x: stages, y: [80.6, 60.61, 17.44, 0.0, 0.0, 0.0], name: 'Parallel Execution (>1 Running Threads) %', type: 'bar', marker: { color: '#22c55e' } },
+            { x: stages, y: [6, 8, 4, 1, 1, 1], name: 'Peak Running Concurrency (Threads)', type: 'scatter', mode: 'lines+markers', yaxis: 'y2', line: { color: '#38bdf8', width: 3 } }
+        ], {
+            ...darkLayout,
+            title: '1. Sequential Bottleneck vs. Parallel Execution Time (%) & Peak Concurrency',
+            barmode: 'stack',
+            yaxis: { title: 'Wall-Clock Time (%)', range: [0, 105] },
+            yaxis2: { title: 'Peak Running Threads', overlaying: 'y', side: 'right' }
+        });
+
+        // 2. Core Migrations vs Cross-NUMA Socket Bounces
+        Plotly.newPlot('chart_migrations', [
+            { x: stages, y: [6, 201, 206, 9, 0, 0], name: 'Total CPU Core Migrations', type: 'bar', marker: { color: '#60a5fa' } },
+            { x: stages, y: [0, 6, 64, 0, 0, 0], name: 'Cross-NUMA Socket Bounces (Node 0 <-> Node 1)', type: 'bar', marker: { color: '#f43f5e' } }
+        ], {
+            ...darkLayout,
+            title: '2. CFS Thread Core Migrations vs. Cross-NUMA Socket Bounces',
+            barmode: 'group',
+            yaxis: { title: 'Migration Event Count (200ms ticks)' }
+        });
+
+        // 3. Voluntary vs Involuntary Preemptions
+        Plotly.newPlot('chart_preemptions', [
+            { x: stages, y: [8186, 6459292, 106266, 906, 11, 5], name: 'Voluntary Context Switches (I/O & Lock Waits)', type: 'bar', marker: { color: '#a78bfa' } },
+            { x: stages, y: [93, 332, 320, 189, 1, 0], name: 'Involuntary Preemptions (Time-Slice / Contention)', type: 'bar', marker: { color: '#facc15' } }
+        ], {
+            ...darkLayout,
+            title: '3. Voluntary Context Switches vs. Involuntary Preemptions (Log Scale)',
+            barmode: 'group',
+            yaxis: { title: 'Switch Count (log scale)', type: 'log' }
+        });
+
+        // 4. NUMA Memory Page Allocation vs CPU Execution Affiliation
+        Plotly.newPlot('chart_numa_mismatch', [
+            { x: stages, y: [94.18, 61.74, 74.34, 99.83, 62.17, 87.07], name: 'NUMA Node 0 RAM Pages (%)', type: 'bar', marker: { color: '#14b8a6' } },
+            { x: stages, y: [5.82, 38.26, 25.66, 0.17, 37.83, 12.93], name: 'NUMA Node 1 RAM Pages (%)', type: 'bar', marker: { color: '#0ea5e9' } },
+            { x: stages, y: [100.0, 88.88, 83.2, 100.0, 100.0, 100.0], name: 'NUMA Node 0 CPU Exec (%)', type: 'scatter', mode: 'lines+markers', line: { color: '#f472b6', width: 3 } },
+            { x: stages, y: [5.82, 40.87, 33.84, 0.17, 37.83, 12.93], name: 'Est. Cross-NUMA Remote Access (%)', type: 'scatter', mode: 'lines+markers', line: { color: '#ef4444', width: 3, dash: 'dot' } }
+        ], {
+            ...darkLayout,
+            title: '4. NUMA Memory Allocation (N0/N1) vs. CPU Execution Affiliation & Remote Access',
+            barmode: 'stack',
+            yaxis: { title: 'Percentage (%)', range: [0, 105] }
+        });
+
+        // 5. Per-Core Hit Heatmap across 0-93 Online Cores
+        Plotly.newPlot('chart_core_heatmap', [
+            {
+                z: [[179, 0, 0, 0, 122, 0, 19, 0, 0, 0, 118, 0, 97, 0, 0, 0, 66, 0, 0, 0, 0, 0, 114, 0, 52, 0, 0, 0, 96, 0, 0, 0, 23, 0, 63, 0, 1, 0, 0, 0, 0, 0, 88, 0, 0, 0, 99, 0, 0, 0, 187, 0, 87, 0, 137, 0, 159, 0, 0, 0, 0, 0, 211, 0, 63, 0, 117, 0, 156, 0, 0, 0, 0, 0, 61, 0, 0, 0, 124, 0, 41, 0, 1, 0, 63, 0, 63, 0, 219, 0, 94, 0, 61, 0], [651, 25, 154, 102, 854, 67, 520, 0, 901, 42, 63, 0, 719, 153, 318, 111, 771, 111, 1052, 0, 994, 115, 685, 87, 630, 66, 853, 82, 954, 0, 870, 0, 198, 0, 139, 90, 0, 34, 623, 42, 656, 0, 567, 0, 644, 68, 517, 361, 41, 45, 497, 11, 154, 112, 755, 0, 37, 46, 532, 153, 242, 0, 629, 0, 361, 0, 154, 98, 46, 0, 0, 0, 260, 0, 0, 30, 0, 154, 37, 139, 857, 42, 623, 42, 651, 42, 154, 0, 0, 42, 0, 42, 154, 14], [174, 11, 231, 4, 42, 4, 207, 11, 45, 37, 152, 29, 85, 69, 40, 10, 128, 23, 37, 4, 164, 15, 29, 18, 147, 46, 81, 23, 13, 28, 101, 25, 90, 43, 165, 4, 20, 10, 228, 20, 155, 28, 246, 4, 149, 25, 289, 4, 122, 4, 113, 4, 260, 4, 179, 4, 278, 7, 134, 27, 233, 152, 276, 121, 120, 78, 226, 146, 91, 83, 309, 10, 88, 15, 176, 33, 220, 39, 191, 15, 184, 15, 86, 4, 261, 81, 38, 36, 140, 13, 175, 36, 144, 4], [0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 187, 0, 7, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 13, 0, 8, 0, 5, 0, 304, 0, 102, 0, 24, 0, 10, 0, 6, 0, 7, 0, 10, 0, 4, 0, 4, 0, 9, 0, 0, 0, 4, 0, 1, 0, 2, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0]],
+                x: ["C0", "C1", "C2", "C3", "C4", "C5", "C6", "C7", "C8", "C9", "C10", "C11", "C12", "C13", "C14", "C15", "C16", "C17", "C18", "C19", "C20", "C21", "C22", "C23", "C24", "C25", "C26", "C27", "C28", "C29", "C30", "C31", "C32", "C33", "C34", "C35", "C36", "C37", "C38", "C39", "C40", "C41", "C42", "C43", "C44", "C45", "C46", "C47", "C48", "C49", "C50", "C51", "C52", "C53", "C54", "C55", "C56", "C57", "C58", "C59", "C60", "C61", "C62", "C63", "C64", "C65", "C66", "C67", "C68", "C69", "C70", "C71", "C72", "C73", "C74", "C75", "C76", "C77", "C78", "C79", "C80", "C81", "C82", "C83", "C84", "C85", "C86", "C87", "C88", "C89", "C90", "C91", "C92", "C93"],
+                y: stages,
+                type: 'heatmap',
+                colorscale: 'Viridis',
+                colorbar: { title: 'Thread Hits' }
+            }
+        ], {
+            ...darkLayout,
+            title: '5. Linux CFS Default Core Assignment Heatmap Across Online Cores (CPU 0 - CPU 93)',
+            xaxis: { title: 'Logical CPU Core ID (Even = NUMA Node 0, Odd = NUMA Node 1)' },
+            yaxis: { title: 'Pipeline Stage' }
+        });
+    </script>
+</body>
+</html>
