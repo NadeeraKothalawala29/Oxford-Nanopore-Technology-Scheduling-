@@ -1,0 +1,55 @@
+nohup: ignoring input
+Python path: /home/g21_nadeera/miniconda3/envs/ont_benchmark/bin/python3
+psutil successfully loaded!
+
+=======================================================
+   [baseline_1x] STARTING ITERATION 1/2
+=======================================================
+
+[baseline_1x | Iter 1] >>> Starting Stage: 00_fast5_to_pod5
+Command: pod5 convert fast5 /home/g21_nadeera/fyp-nanopore-os-benchmark/datasets/fast5 --output /home/g21_nadeera/fyp-nanopore-os-benchmark/results/baseline_1x/iter_1/pod5_converted/converted.pod5 --threads 16 --recursive --force-overwrite
+[baseline_1x | Iter 1] <<< Finished 00_fast5_to_pod5 in 7.64s | Status: SUCCESS | Peak CPU: 680.0% | Peak RAM: 1846.7 MB | Max Threads: 82
+
+[baseline_1x | Iter 1] >>> Starting Stage: 02_nanoplot_qc
+Command: NanoPlot -t 16 --fastq /home/g21_nadeera/fyp-nanopore-os-benchmark/datasets/fastq/FAX38735_pass_0b607977_50b67caa_5.fastq.gz /home/g21_nadeera/fyp-nanopore-os-benchmark/datasets/fastq/FAX38735_pass_0b607977_50b67caa_4.fastq.gz /home/g21_nadeera/fyp-nanopore-os-benchmark/datasets/fastq/FAX38735_pass_0b607977_50b67caa_2.fastq.gz /home/g21_nadeera/fyp-nanopore-os-benchmark/datasets/fastq/FAX38735_pass_0b607977_50b67caa_0.fastq.gz /home/g21_nadeera/fyp-nanopore-os-benchmark/datasets/fastq/FAX38735_pass_0b607977_50b67caa_3.fastq.gz /home/g21_nadeera/fyp-nanopore-os-benchmark/datasets/fastq/FAX38735_pass_0b607977_50b67caa_1.fastq.gz -o /home/g21_nadeera/fyp-nanopore-os-benchmark/results/baseline_1x/iter_1/qc
+[baseline_1x | Iter 1] <<< Finished 02_nanoplot_qc in 16.73s | Status: SUCCESS | Peak CPU: 5457.1% | Peak RAM: 2014.9 MB | Max Threads: 140
+
+[baseline_1x | Iter 1] >>> Starting Stage: 03_flye_denovo_assembly
+Command: flye --nano-raw /home/g21_nadeera/fyp-nanopore-os-benchmark/datasets/fastq/FAX38735_pass_0b607977_50b67caa_5.fastq.gz /home/g21_nadeera/fyp-nanopore-os-benchmark/datasets/fastq/FAX38735_pass_0b607977_50b67caa_4.fastq.gz /home/g21_nadeera/fyp-nanopore-os-benchmark/datasets/fastq/FAX38735_pass_0b607977_50b67caa_2.fastq.gz /home/g21_nadeera/fyp-nanopore-os-benchmark/datasets/fastq/FAX38735_pass_0b607977_50b67caa_0.fastq.gz /home/g21_nadeera/fyp-nanopore-os-benchmark/datasets/fastq/FAX38735_pass_0b607977_50b67caa_3.fastq.gz /home/g21_nadeera/fyp-nanopore-os-benchmark/datasets/fastq/FAX38735_pass_0b607977_50b67caa_1.fastq.gz --out-dir /home/g21_nadeera/fyp-nanopore-os-benchmark/results/baseline_1x/iter_1/flye_assembly --threads 16
+[baseline_1x | Iter 1] <<< Finished 03_flye_denovo_assembly in 55.90s | Status: SUCCESS | Peak CPU: 1612.3% | Peak RAM: 8303.9 MB | Max Threads: 40
+
+[baseline_1x | Iter 1] >>> Starting Stage: 04_minimap2_align
+Command: minimap2 -ax map-ont -t 16 /home/g21_nadeera/fyp-nanopore-os-benchmark/results/baseline_1x/iter_1/flye_assembly/assembly.fasta /home/g21_nadeera/fyp-nanopore-os-benchmark/datasets/fastq/FAX38735_pass_0b607977_50b67caa_5.fastq.gz /home/g21_nadeera/fyp-nanopore-os-benchmark/datasets/fastq/FAX38735_pass_0b607977_50b67caa_4.fastq.gz /home/g21_nadeera/fyp-nanopore-os-benchmark/datasets/fastq/FAX38735_pass_0b607977_50b67caa_2.fastq.gz /home/g21_nadeera/fyp-nanopore-os-benchmark/datasets/fastq/FAX38735_pass_0b607977_50b67caa_0.fastq.gz /home/g21_nadeera/fyp-nanopore-os-benchmark/datasets/fastq/FAX38735_pass_0b607977_50b67caa_3.fastq.gz /home/g21_nadeera/fyp-nanopore-os-benchmark/datasets/fastq/FAX38735_pass_0b607977_50b67caa_1.fastq.gz > /home/g21_nadeera/fyp-nanopore-os-benchmark/results/baseline_1x/iter_1/aligned.sam
+[baseline_1x | Iter 1] <<< Finished 04_minimap2_align in 0.42s | Status: SUCCESS | Peak CPU: 252.0% | Peak RAM: 32.3 MB | Max Threads: 19
+
+[baseline_1x | Iter 1] >>> Starting Stage: 05_samtools_sort_index
+Command: samtools sort -@ 16 -o /home/g21_nadeera/fyp-nanopore-os-benchmark/results/baseline_1x/iter_1/sorted.bam /home/g21_nadeera/fyp-nanopore-os-benchmark/results/baseline_1x/iter_1/aligned.sam && samtools index -@ 16 /home/g21_nadeera/fyp-nanopore-os-benchmark/results/baseline_1x/iter_1/sorted.bam
+[baseline_1x | Iter 1] <<< Finished 05_samtools_sort_index in 0.11s | Status: SUCCESS | Peak CPU: 0.0% | Peak RAM: 0.0 MB | Max Threads: 0
+
+=======================================================
+   [baseline_1x] STARTING ITERATION 2/2
+=======================================================
+
+[baseline_1x | Iter 2] >>> Starting Stage: 00_fast5_to_pod5
+Command: pod5 convert fast5 /home/g21_nadeera/fyp-nanopore-os-benchmark/datasets/fast5 --output /home/g21_nadeera/fyp-nanopore-os-benchmark/results/baseline_1x/iter_2/pod5_converted/converted.pod5 --threads 16 --recursive --force-overwrite
+[baseline_1x | Iter 2] <<< Finished 00_fast5_to_pod5 in 7.61s | Status: SUCCESS | Peak CPU: 680.9% | Peak RAM: 1844.5 MB | Max Threads: 82
+
+[baseline_1x | Iter 2] >>> Starting Stage: 02_nanoplot_qc
+Command: NanoPlot -t 16 --fastq /home/g21_nadeera/fyp-nanopore-os-benchmark/datasets/fastq/FAX38735_pass_0b607977_50b67caa_5.fastq.gz /home/g21_nadeera/fyp-nanopore-os-benchmark/datasets/fastq/FAX38735_pass_0b607977_50b67caa_4.fastq.gz /home/g21_nadeera/fyp-nanopore-os-benchmark/datasets/fastq/FAX38735_pass_0b607977_50b67caa_2.fastq.gz /home/g21_nadeera/fyp-nanopore-os-benchmark/datasets/fastq/FAX38735_pass_0b607977_50b67caa_0.fastq.gz /home/g21_nadeera/fyp-nanopore-os-benchmark/datasets/fastq/FAX38735_pass_0b607977_50b67caa_3.fastq.gz /home/g21_nadeera/fyp-nanopore-os-benchmark/datasets/fastq/FAX38735_pass_0b607977_50b67caa_1.fastq.gz -o /home/g21_nadeera/fyp-nanopore-os-benchmark/results/baseline_1x/iter_2/qc
+[baseline_1x | Iter 2] <<< Finished 02_nanoplot_qc in 16.87s | Status: SUCCESS | Peak CPU: 4922.4% | Peak RAM: 2000.8 MB | Max Threads: 131
+
+[baseline_1x | Iter 2] >>> Starting Stage: 03_flye_denovo_assembly
+Command: flye --nano-raw /home/g21_nadeera/fyp-nanopore-os-benchmark/datasets/fastq/FAX38735_pass_0b607977_50b67caa_5.fastq.gz /home/g21_nadeera/fyp-nanopore-os-benchmark/datasets/fastq/FAX38735_pass_0b607977_50b67caa_4.fastq.gz /home/g21_nadeera/fyp-nanopore-os-benchmark/datasets/fastq/FAX38735_pass_0b607977_50b67caa_2.fastq.gz /home/g21_nadeera/fyp-nanopore-os-benchmark/datasets/fastq/FAX38735_pass_0b607977_50b67caa_0.fastq.gz /home/g21_nadeera/fyp-nanopore-os-benchmark/datasets/fastq/FAX38735_pass_0b607977_50b67caa_3.fastq.gz /home/g21_nadeera/fyp-nanopore-os-benchmark/datasets/fastq/FAX38735_pass_0b607977_50b67caa_1.fastq.gz --out-dir /home/g21_nadeera/fyp-nanopore-os-benchmark/results/baseline_1x/iter_2/flye_assembly --threads 16
+[baseline_1x | Iter 2] <<< Finished 03_flye_denovo_assembly in 57.64s | Status: SUCCESS | Peak CPU: 1766.9% | Peak RAM: 8303.7 MB | Max Threads: 28
+
+[baseline_1x | Iter 2] >>> Starting Stage: 04_minimap2_align
+Command: minimap2 -ax map-ont -t 16 /home/g21_nadeera/fyp-nanopore-os-benchmark/results/baseline_1x/iter_2/flye_assembly/assembly.fasta /home/g21_nadeera/fyp-nanopore-os-benchmark/datasets/fastq/FAX38735_pass_0b607977_50b67caa_5.fastq.gz /home/g21_nadeera/fyp-nanopore-os-benchmark/datasets/fastq/FAX38735_pass_0b607977_50b67caa_4.fastq.gz /home/g21_nadeera/fyp-nanopore-os-benchmark/datasets/fastq/FAX38735_pass_0b607977_50b67caa_2.fastq.gz /home/g21_nadeera/fyp-nanopore-os-benchmark/datasets/fastq/FAX38735_pass_0b607977_50b67caa_0.fastq.gz /home/g21_nadeera/fyp-nanopore-os-benchmark/datasets/fastq/FAX38735_pass_0b607977_50b67caa_3.fastq.gz /home/g21_nadeera/fyp-nanopore-os-benchmark/datasets/fastq/FAX38735_pass_0b607977_50b67caa_1.fastq.gz > /home/g21_nadeera/fyp-nanopore-os-benchmark/results/baseline_1x/iter_2/aligned.sam
+[baseline_1x | Iter 2] <<< Finished 04_minimap2_align in 0.42s | Status: SUCCESS | Peak CPU: 250.9% | Peak RAM: 33.4 MB | Max Threads: 19
+
+[baseline_1x | Iter 2] >>> Starting Stage: 05_samtools_sort_index
+Command: samtools sort -@ 16 -o /home/g21_nadeera/fyp-nanopore-os-benchmark/results/baseline_1x/iter_2/sorted.bam /home/g21_nadeera/fyp-nanopore-os-benchmark/results/baseline_1x/iter_2/aligned.sam && samtools index -@ 16 /home/g21_nadeera/fyp-nanopore-os-benchmark/results/baseline_1x/iter_2/sorted.bam
+[baseline_1x | Iter 2] <<< Finished 05_samtools_sort_index in 0.11s | Status: SUCCESS | Peak CPU: 0.0% | Peak RAM: 0.0 MB | Max Threads: 0
+
+[baseline_1x] Benchmark Complete!
+Time-series telemetry: /home/g21_nadeera/fyp-nanopore-os-benchmark/logs/timeseries_baseline_1x_20261029_212011.csv
+Stage summary metrics: /home/g21_nadeera/fyp-nanopore-os-benchmark/logs/summary_baseline_1x_20261029_212011.csv

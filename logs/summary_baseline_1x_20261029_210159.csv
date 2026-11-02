@@ -1,0 +1,15 @@
+timestamp,run_tag,iteration,pipeline,stage,status,duration_sec,peak_cpu_percent,peak_rss_mb,max_threads,max_processes,unique_cores_used,total_vol_ctx,total_invol_ctx
+2026-10-29T21:02:07.266233,baseline_1x,1,modular_ont,00_fast5_to_pod5,SUCCESS,7.62,0.0,1825.28,82,9,11,2431,88
+2026-10-29T21:02:07.269343,baseline_1x,1,modular_ont,01_dorado_basecall,FAILED(127),0.003,0.0,0.0,0,0,0,0,0
+2026-10-29T21:02:07.271687,baseline_1x,1,modular_ont,01_dorado_basecall_r9,FAILED(127),0.002,0.0,0.0,0,0,0,0,0
+2026-10-29T21:02:36.081780,baseline_1x,1,modular_ont,02_nanoplot_qc,SUCCESS,28.809,0.0,1896.12,135,11,47,33120,28
+2026-10-29T21:03:31.983945,baseline_1x,1,modular_ont,03_flye_denovo_assembly,SUCCESS,55.902,0.0,8244.39,23,20,29,1581,160
+2026-10-29T21:03:32.488801,baseline_1x,1,modular_ont,04_minimap2_align,SUCCESS,0.505,0.0,0.0,0,0,0,0,0
+2026-10-29T21:03:32.993219,baseline_1x,1,modular_ont,05_samtools_sort_index,SUCCESS,0.504,0.0,0.0,0,0,0,0,0
+2026-10-29T21:03:40.615729,baseline_1x,2,modular_ont,00_fast5_to_pod5,SUCCESS,7.618,0.0,1829.58,82,9,15,2467,95
+2026-10-29T21:03:40.618555,baseline_1x,2,modular_ont,01_dorado_basecall,FAILED(127),0.003,0.0,0.0,0,0,0,0,0
+2026-10-29T21:03:40.620959,baseline_1x,2,modular_ont,01_dorado_basecall_r9,FAILED(127),0.002,0.0,0.0,0,0,0,0,0
+2026-10-29T21:03:57.869181,baseline_1x,2,modular_ont,02_nanoplot_qc,SUCCESS,17.248,0.0,1937.92,136,11,45,4319,10
+2026-10-29T21:04:54.744668,baseline_1x,2,modular_ont,03_flye_denovo_assembly,SUCCESS,56.875,0.0,8268.3,23,20,28,1577,204
+2026-10-29T21:04:55.249306,baseline_1x,2,modular_ont,04_minimap2_align,SUCCESS,0.504,0.0,0.0,0,0,0,0,0
+2026-10-29T21:04:55.754253,baseline_1x,2,modular_ont,05_samtools_sort_index,SUCCESS,0.505,0.0,0.0,0,0,0,0,0

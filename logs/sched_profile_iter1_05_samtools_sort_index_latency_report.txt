@@ -1,0 +1,45 @@
+-------------------------------------------------------------------------------------------------------------------------------------------
+  Task                  |   Runtime ms  | Switches | Vol / Invol  | Migrations | Avg wait ms | Max wait ms | Max wait at (s) | Last Wchan
+-------------------------------------------------------------------------------------------------------------------------------------------
+  samtools:3506         |     34.448 ms |      428 |   428/0      |          0 |   0.0000 ms |   0.0000 ms |        0.0074 s | futex_wait_queue_me
+  samtools:3507         |     33.178 ms |      393 |   393/0      |          0 |   0.0000 ms |   0.0000 ms |        0.0074 s | futex_wait_queue_me
+  samtools:3508         |     30.411 ms |      332 |   332/0      |          0 |   0.0000 ms |   0.0000 ms |        0.0074 s | futex_wait_queue_me
+  samtools:3510         |     29.348 ms |      214 |   214/0      |          0 |   0.0000 ms |   0.0000 ms |        0.0074 s | futex_wait_queue_me
+  samtools:3509         |     29.211 ms |      276 |   276/0      |          0 |   0.0000 ms |   0.0000 ms |        0.0074 s | futex_wait_queue_me
+  samtools:3511         |     27.298 ms |      150 |   150/0      |          0 |   0.0000 ms |   0.0000 ms |        0.0074 s | futex_wait_queue_me
+  samtools:3512         |     26.793 ms |      133 |   133/0      |          0 |   0.0000 ms |   0.0000 ms |        0.0074 s | futex_wait_queue_me
+  samtools:3513         |     26.362 ms |      101 |   101/0      |          0 |   0.0000 ms |   0.0000 ms |        0.0074 s | futex_wait_queue_me
+  samtools:3505         |     26.090 ms |     1040 |  1039/1      |          0 |   0.0000 ms |   0.0078 ms |        0.0470 s | hrtimer_nanosleep
+  samtools:3514         |     25.233 ms |       46 |    46/0      |          0 |   0.0000 ms |   0.0000 ms |        0.0074 s | futex_wait_queue_me
+  samtools:3518         |     24.609 ms |       12 |    12/0      |          0 |   0.0000 ms |   0.0000 ms |        0.0074 s | futex_wait_queue_me
+  samtools:3515         |     24.429 ms |       12 |    12/0      |          0 |   0.0000 ms |   0.0000 ms |        0.0074 s | futex_wait_queue_me
+  samtools:3517         |     24.327 ms |        9 |     9/0      |          0 |   0.0000 ms |   0.0000 ms |        0.0074 s | futex_wait_queue_me
+  samtools:3520         |     24.306 ms |       14 |    14/0      |          0 |   0.0000 ms |   0.0000 ms |        0.0074 s | futex_wait_queue_me
+  samtools:3519         |     24.239 ms |       12 |    12/0      |          0 |   0.0000 ms |   0.0000 ms |        0.0074 s | futex_wait_queue_me
+  samtools:3521         |     24.230 ms |        6 |     6/0      |          0 |   0.0000 ms |   0.0000 ms |        0.0074 s | futex_wait_queue_me
+  samtools:3516         |     24.051 ms |       12 |    12/0      |          0 |   0.0000 ms |   0.0000 ms |        0.0074 s | futex_wait_queue_me
+  samtools:3522         |     10.004 ms |      296 |   296/0      |          0 |   0.0000 ms |   0.0000 ms |        0.0074 s | futex_wait_queue_me
+  samtools:3539         |      8.594 ms |      194 |   194/0      |          1 |   0.0000 ms |   0.0000 ms |        0.0272 s | futex_wait_queue_me
+  samtools:3504         |      4.042 ms |      101 |   101/0      |          0 |   0.0000 ms |   0.0000 ms |        0.0013 s | userspace_on_cpu
+  samtools:3556         |      3.626 ms |       65 |    65/0      |          0 |   0.0000 ms |   0.0000 ms |        0.0854 s | futex_wait_queue_me
+  samtools:3554         |      3.305 ms |        5 |     5/0      |          0 |   0.0000 ms |   0.0000 ms |        0.0854 s | futex_wait_queue_me
+  samtools:3555         |      3.213 ms |        4 |     4/0      |          0 |   0.0000 ms |   0.0000 ms |        0.0854 s | futex_wait_queue_me
+  samtools:3552         |      3.162 ms |        9 |     9/0      |          0 |   0.0000 ms |   0.0000 ms |        0.0854 s | userspace_on_cpu
+  samtools:3548         |      2.434 ms |        4 |     4/0      |          0 |   0.0000 ms |   0.0000 ms |        0.0854 s | userspace_on_cpu
+  samtools:3547         |      2.213 ms |        6 |     6/0      |          0 |   0.0000 ms |   0.0000 ms |        0.0854 s | userspace_on_cpu
+  samtools:3545         |      2.191 ms |        3 |     3/0      |          0 |   0.0000 ms |   0.0000 ms |        0.0854 s | userspace_on_cpu
+  samtools:3553         |      2.003 ms |        3 |     3/0      |          0 |   0.0000 ms |   0.0000 ms |        0.0854 s | userspace_on_cpu
+  samtools:3540         |      1.450 ms |        7 |     7/0      |          0 |   0.0000 ms |   0.0000 ms |        0.0854 s | userspace_on_cpu
+  samtools:3541         |      1.410 ms |        5 |     5/0      |          0 |   0.0000 ms |   0.0000 ms |        0.0854 s | userspace_on_cpu
+  samtools:3542         |      1.354 ms |        5 |     5/0      |          0 |   0.0000 ms |   0.0000 ms |        0.0854 s | userspace_on_cpu
+  samtools:3543         |      1.318 ms |        3 |     3/0      |          0 |   0.0000 ms |   0.0000 ms |        0.0854 s | userspace_on_cpu
+  samtools:3544         |      1.256 ms |        3 |     3/0      |          0 |   0.0000 ms |   0.0000 ms |        0.0854 s | userspace_on_cpu
+  samtools:3546         |      1.116 ms |        5 |     5/0      |          0 |   0.0000 ms |   0.0000 ms |        0.0854 s | userspace_on_cpu
+  samtools:3549         |      0.849 ms |        2 |     2/0      |          0 |   0.0000 ms |   0.0000 ms |        0.0854 s | userspace_on_cpu
+  samtools:3550         |      0.797 ms |        5 |     5/0      |          0 |   0.0000 ms |   0.0000 ms |        0.0854 s | userspace_on_cpu
+  samtools:3551         |      0.574 ms |        2 |     2/0      |          0 |   0.0000 ms |   0.0000 ms |        0.0854 s | userspace_on_cpu
+-------------------------------------------------------------------------------------------------------------------------------------------
+  TOTAL ( 37 threads)   |    513.474 ms |     3917 |  3916/1      |          1 |
+-------------------------------------------------------------------------------------------------------------------------------------------
+  Command: bash -c samtools sort -@ 16 -o /home/g21_nadeera/fyp-nanopore-os-benchmark/results/sched_profile/iter_1/sorted.bam /home/g21_nadeera/fyp-nanopore-os-benchmark/results/sched_profile/iter_1/aligned.sam && samtools index -@ 16 /home/g21_nadeera/fyp-nanopore-os-benchmark/results/sched_profile/iter_1/sorted.bam
+  Wall-clock Duration: 0.094 s

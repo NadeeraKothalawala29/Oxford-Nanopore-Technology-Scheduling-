@@ -1,0 +1,5 @@
+[trace_scheduler] Recording scheduler events to: /home/g21_nadeera/fyp-nanopore-os-benchmark/logs/sched_profile_iter1_05_samtools_sort_index_sched.data
+[trace_scheduler] Target command: bash -c samtools sort -@ 16 -o /home/g21_nadeera/fyp-nanopore-os-benchmark/results/sched_profile/iter_1/sorted.bam /home/g21_nadeera/fyp-nanopore-os-benchmark/results/sched_profile/iter_1/aligned.sam && samtools index -@ 16 /home/g21_nadeera/fyp-nanopore-os-benchmark/results/sched_profile/iter_1/sorted.bam
+[bam_sort_core] merging from 0 files and 16 in-memory blocks...
+[trace_scheduler] FlameGraph HTML:  /home/g21_nadeera/fyp-nanopore-os-benchmark/logs/sched_profile_iter1_05_samtools_sort_index_sched_profile.html
+[trace_scheduler] Latency Report:   /home/g21_nadeera/fyp-nanopore-os-benchmark/logs/sched_profile_iter1_05_samtools_sort_index_latency_report.txt

@@ -1,0 +1,64 @@
+-------------------------------------------------------------------------------------------------------------------------------------------
+  Task                  |   Runtime ms  | Switches | Vol / Invol  | Migrations | Avg wait ms | Max wait ms | Max wait at (s) | Last Wchan
+-------------------------------------------------------------------------------------------------------------------------------------------
+  minimap2:3404         |     57.439 ms |        4 |     4/0      |          0 |   0.0000 ms |   0.0000 ms |        0.0511 s | userspace_on_cpu
+  minimap2:3476         |     51.754 ms |        2 |     2/0      |          0 |   0.0000 ms |   0.0000 ms |        0.2916 s | userspace_on_cpu
+  minimap2:3458         |     49.378 ms |        3 |     3/0      |          0 |   0.0000 ms |   0.0000 ms |        0.2310 s | futex_wait_queue_me
+  minimap2:3440         |     46.738 ms |        1 |     1/0      |          0 |   0.0000 ms |   0.0000 ms |        0.1753 s | futex_wait_queue_me
+  minimap2:3422         |     46.203 ms |        1 |     1/0      |          0 |   0.0000 ms |   0.0000 ms |        0.1219 s | userspace_on_cpu
+  minimap2:3386         |     38.085 ms |        1 |     1/0      |          0 |   0.0000 ms |   0.0000 ms |        0.0074 s | futex_wait_queue_me
+  minimap2:3483         |      4.139 ms |        1 |     1/0      |          0 |   0.0000 ms |   0.0000 ms |        0.3448 s | userspace_on_cpu
+  minimap2:3462         |      4.046 ms |        0 |     0/0      |          0 |   0.0000 ms |   0.0000 ms |        0.2847 s | userspace_on_cpu
+  minimap2:3410         |      3.997 ms |        1 |     1/0      |          0 |   0.0000 ms |   0.0000 ms |        0.1055 s | userspace_on_cpu
+  minimap2:3411         |      3.968 ms |        2 |     2/0      |          0 |   0.0000 ms |   0.0000 ms |        0.1055 s | userspace_on_cpu
+  minimap2:3412         |      3.928 ms |        5 |     5/0      |          0 |   0.0000 ms |   0.0000 ms |        0.1055 s | userspace_on_cpu
+  minimap2:3413         |      3.912 ms |        4 |     4/0      |          0 |   0.0000 ms |   0.0000 ms |        0.1055 s | userspace_on_cpu
+  minimap2:3414         |      3.907 ms |        1 |     1/0      |          0 |   0.0000 ms |   0.0000 ms |        0.1055 s | userspace_on_cpu
+  minimap2:3415         |      3.886 ms |        1 |     1/0      |          0 |   0.0000 ms |   0.0000 ms |        0.1055 s | userspace_on_cpu
+  minimap2:3416         |      3.863 ms |        1 |     1/0      |          0 |   0.0000 ms |   0.0000 ms |        0.1055 s | userspace_on_cpu
+  minimap2:3417         |      3.842 ms |        0 |     0/0      |          0 |   0.0000 ms |   0.0000 ms |        0.1055 s | userspace_on_cpu
+  minimap2:3418         |      3.797 ms |        4 |     4/0      |          0 |   0.0000 ms |   0.0000 ms |        0.1055 s | userspace_on_cpu
+  minimap2:3419         |      3.784 ms |        2 |     2/0      |          0 |   0.0000 ms |   0.0000 ms |        0.1055 s | userspace_on_cpu
+  minimap2:3420         |      3.770 ms |        0 |     0/0      |          0 |   0.0000 ms |   0.0000 ms |        0.1055 s | userspace_on_cpu
+  minimap2:3409         |      3.768 ms |        5 |     5/0      |          0 |   0.0000 ms |   0.0000 ms |        0.1055 s | userspace_on_cpu
+  minimap2:3421         |      3.731 ms |        0 |     0/0      |          0 |   0.0000 ms |   0.0000 ms |        0.1055 s | userspace_on_cpu
+  minimap2:3442         |      3.388 ms |        0 |     0/0      |          0 |   0.0000 ms |   0.0000 ms |        0.2225 s | userspace_on_cpu
+  minimap2:3443         |      3.373 ms |        0 |     0/0      |          0 |   0.0000 ms |   0.0000 ms |        0.2225 s | userspace_on_cpu
+  minimap2:3444         |      3.345 ms |        0 |     0/0      |          0 |   0.0000 ms |   0.0000 ms |        0.2225 s | userspace_on_cpu
+  minimap2:3445         |      3.326 ms |        0 |     0/0      |          0 |   0.0000 ms |   0.0000 ms |        0.2225 s | userspace_on_cpu
+  minimap2:3446         |      3.307 ms |        0 |     0/0      |          0 |   0.0000 ms |   0.0000 ms |        0.2225 s | userspace_on_cpu
+  minimap2:3447         |      3.287 ms |        1 |     1/0      |          0 |   0.0000 ms |   0.0000 ms |        0.2225 s | userspace_on_cpu
+  minimap2:3448         |      3.271 ms |        0 |     0/0      |          0 |   0.0000 ms |   0.0000 ms |        0.2225 s | userspace_on_cpu
+  minimap2:3452         |      3.194 ms |        0 |     0/0      |          0 |   0.0000 ms |   0.0000 ms |        0.2225 s | userspace_on_cpu
+  minimap2:3366         |      2.299 ms |       49 |    49/0      |          0 |   0.0000 ms |   0.0000 ms |        0.0074 s | futex_wait_queue_me
+  minimap2:3393         |      1.846 ms |        2 |     2/0      |          0 |   0.0000 ms |   0.0000 ms |        0.0415 s | userspace_on_cpu
+  minimap2:3394         |      1.832 ms |        1 |     1/0      |          0 |   0.0000 ms |   0.0000 ms |        0.0415 s | userspace_on_cpu
+  minimap2:3395         |      1.802 ms |        3 |     3/0      |          0 |   0.0000 ms |   0.0000 ms |        0.0415 s | userspace_on_cpu
+  minimap2:3396         |      1.787 ms |        1 |     1/0      |          0 |   0.0000 ms |   0.0000 ms |        0.0415 s | userspace_on_cpu
+  minimap2:3397         |      1.765 ms |        1 |     1/0      |          0 |   0.0000 ms |   0.0000 ms |        0.0415 s | userspace_on_cpu
+  minimap2:3398         |      1.720 ms |        4 |     4/0      |          0 |   0.0000 ms |   0.0000 ms |        0.0415 s | userspace_on_cpu
+  minimap2:3399         |      1.694 ms |        3 |     3/0      |          0 |   0.0000 ms |   0.0000 ms |        0.0415 s | userspace_on_cpu
+  bash:3365             |      1.689 ms |       14 |    14/0      |          0 |   0.0000 ms |   0.0000 ms |        0.0013 s | do_wait
+  minimap2:3400         |      1.662 ms |        2 |     2/0      |          0 |   0.0000 ms |   0.0000 ms |        0.0415 s | userspace_on_cpu
+  minimap2:3401         |      1.630 ms |        2 |     2/0      |          0 |   0.0000 ms |   0.0000 ms |        0.0415 s | userspace_on_cpu
+  minimap2:3402         |      1.604 ms |        1 |     1/0      |          0 |   0.0000 ms |   0.0000 ms |        0.0415 s | userspace_on_cpu
+  minimap2:3403         |      1.577 ms |        0 |     0/0      |          0 |   0.0000 ms |   0.0000 ms |        0.0415 s | userspace_on_cpu
+  minimap2:3389         |      0.398 ms |        1 |     1/0      |          0 |   0.0000 ms |   0.0000 ms |        0.0415 s | userspace_on_cpu
+  minimap2:3406         |      0.384 ms |        1 |     1/0      |          0 |   0.0000 ms |   0.0000 ms |        0.1055 s | userspace_on_cpu
+  minimap2:3390         |      0.374 ms |        4 |     4/0      |          0 |   0.0000 ms |   0.0000 ms |        0.0415 s | userspace_on_cpu
+  minimap2:3407         |      0.327 ms |        3 |     3/0      |          0 |   0.0000 ms |   0.0000 ms |        0.1055 s | userspace_on_cpu
+  minimap2:3388         |      0.207 ms |        3 |     3/0      |          0 |   0.0000 ms |   0.0000 ms |        0.0415 s | userspace_on_cpu
+  minimap2:3408         |      0.188 ms |        3 |     3/0      |          0 |   0.0000 ms |   0.0000 ms |        0.1055 s | userspace_on_cpu
+  minimap2:3392         |      0.169 ms |        6 |     6/0      |          0 |   0.0000 ms |   0.0000 ms |        0.0415 s | userspace_on_cpu
+  minimap2:3391         |      0.038 ms |        1 |     1/0      |          0 |   0.0000 ms |   0.0000 ms |        0.0415 s | userspace_on_cpu
+  minimap2:3405         |      0.008 ms |        1 |     1/0      |          0 |   0.0000 ms |   0.0000 ms |        0.0511 s | futex_wait_queue_me
+  minimap2:3423         |      0.008 ms |        1 |     1/0      |          0 |   0.0000 ms |   0.0000 ms |        0.1219 s | futex_wait_queue_me
+  minimap2:3387         |      0.008 ms |        1 |     1/0      |          0 |   0.0000 ms |   0.0000 ms |        0.0074 s | futex_wait_queue_me
+  minimap2:3441         |      0.007 ms |        1 |     1/0      |          0 |   0.0000 ms |   0.0000 ms |        0.1753 s | futex_wait_queue_me
+  minimap2:3459         |      0.007 ms |        1 |     1/0      |          0 |   0.0000 ms |   0.0000 ms |        0.2310 s | futex_wait_queue_me
+  minimap2:3477         |      0.000 ms |        0 |     0/0      |          0 |   0.0000 ms |   0.0000 ms |        0.2916 s | userspace_on_cpu
+-------------------------------------------------------------------------------------------------------------------------------------------
+  TOTAL ( 56 threads)   |    399.454 ms |      150 |   150/0      |          0 |
+-------------------------------------------------------------------------------------------------------------------------------------------
+  Command: bash -c minimap2 -ax map-ont -t 16 /home/g21_nadeera/fyp-nanopore-os-benchmark/results/sched_profile/iter_1/flye_assembly/assembly.fasta /home/g21_nadeera/fyp-nanopore-os-benchmark/datasets/fastq/FAX38735_pass_0b607977_50b67caa_5.fastq.gz /home/g21_nadeera/fyp-nanopore-os-benchmark/datasets/fastq/FAX38735_pass_0b607977_50b67caa_4.fastq.gz /home/g21_nadeera/fyp-nanopore-os-benchmark/datasets/fastq/FAX38735_pass_0b607977_50b67caa_2.fastq.gz /home/g21_nadeera/fyp-nanopore-os-benchmark/datasets/fastq/FAX38735_pass_0b607977_50b67caa_0.fastq.gz /home/g21_nadeera/fyp-nanopore-os-benchmark/datasets/fastq/FAX38735_pass_0b607977_50b67caa_3.fastq.gz /home/g21_nadeera/fyp-nanopore-os-benchmark/datasets/fastq/FAX38735_pass_0b607977_50b67caa_1.fastq.gz > /home/g21_nadeera/fyp-nanopore-os-benchmark/results/sched_profile/iter_1/aligned.sam
+  Wall-clock Duration: 0.358 s

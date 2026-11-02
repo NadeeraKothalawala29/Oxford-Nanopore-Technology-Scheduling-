@@ -1,0 +1,11 @@
+timestamp,run_tag,iteration,pipeline,stage,status,duration_sec,peak_cpu_percent,peak_rss_mb,max_threads,max_processes,unique_cores_used,total_vol_ctx,total_invol_ctx
+2026-10-29T21:20:19.484397,baseline_1x,1,modular_ont,00_fast5_to_pod5,SUCCESS,7.643,680.0,1846.65,82,9,20,13595,109
+2026-10-29T21:20:36.210695,baseline_1x,1,modular_ont,02_nanoplot_qc,SUCCESS,16.725,5457.1,2014.91,140,11,48,9533,247
+2026-10-29T21:21:32.115896,baseline_1x,1,modular_ont,03_flye_denovo_assembly,SUCCESS,55.905,1612.3,8303.91,40,20,31,1907,181
+2026-10-29T21:21:32.531141,baseline_1x,1,modular_ont,04_minimap2_align,SUCCESS,0.415,252.0,32.26,19,2,2,55,0
+2026-10-29T21:21:32.636363,baseline_1x,1,modular_ont,05_samtools_sort_index,SUCCESS,0.105,0.0,0.0,0,0,0,0,0
+2026-10-29T21:21:40.251537,baseline_1x,2,modular_ont,00_fast5_to_pod5,SUCCESS,7.611,680.9,1844.54,82,9,12,13605,84
+2026-10-29T21:21:57.117770,baseline_1x,2,modular_ont,02_nanoplot_qc,SUCCESS,16.866,4922.4,2000.78,131,12,37,9404,363
+2026-10-29T21:22:54.759297,baseline_1x,2,modular_ont,03_flye_denovo_assembly,SUCCESS,57.641,1766.9,8303.71,28,20,29,1898,144
+2026-10-29T21:22:55.176497,baseline_1x,2,modular_ont,04_minimap2_align,SUCCESS,0.417,250.9,33.44,19,2,2,54,0
+2026-10-29T21:22:55.282489,baseline_1x,2,modular_ont,05_samtools_sort_index,SUCCESS,0.106,0.0,0.0,0,0,0,0,0
