@@ -1,0 +1,36 @@
+ONT Dorado basecall server software version 7.3.9+b2176f600, client-server API version 18.0.0, minimap2 version 2.24-r1122
+log path:            /home/g21_nadeera/fyp-nanopore-os-benchmark/results/unpinned_baseline/dorado_work/logs
+max queued reads:    33000
+num socket threads:  2
+max returned events: 256000
+gpu device:          cuda:1
+Use of this software is permitted solely under the terms of the end user license agreement (EULA).
+By running, copying or accessing this software, you are demonstrating your acceptance of the EULA.
+The EULA may be found in /opt/ont/dorado/bin
+
+
+
+Config loaded:
+config file:               /opt/ont/dorado/data/dna_r9.4.1_450bps_fast.cfg
+model file:                /opt/ont/dorado/data/dna_r9.4.1_e8_fast@v3.4
+Starting server on port: ipc:///tmp/dorado_ipc_479608/5555
+ONT basecalling software version 7.3.9+b2176f600, client-server API version 18.0.0
+config file:        /opt/ont/dorado/data/dna_r9.4.1_450bps_fast.cfg
+input path:         /home/g21_nadeera/fyp-nanopore-os-benchmark/results/unpinned_baseline/pod5_converted
+save path:          /home/g21_nadeera/fyp-nanopore-os-benchmark/results/unpinned_baseline/dorado_work/out
+minimum qscore:     8
+records per file:   4000
+
+Use of this software is permitted solely under the terms of the end user license agreement (EULA).
+By running, copying or accessing this software, you are demonstrating your acceptance of the EULA.
+The EULA may be found in /opt/ont/dorado/bin
+Found 1 input read file to process.
+Init time: 3 ms
+
+0%   10   20   30   40   50   60   70   80   90   100%
+|----|----|----|----|----|----|----|----|----|----|
+***************************************************
+Caller time: 43524 ms, Samples called: 134857784, samples/s: 3.09847e+06
+Finishing up any open output files.
+Basecalling completed successfully.
+[run_dorado_stage] Wrote 91576 lines to /home/g21_nadeera/fyp-nanopore-os-benchmark/results/unpinned_baseline/basecalled.fastq

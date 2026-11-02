@@ -4,6 +4,7 @@ datasets/
 *.pod5
 *.fastq
 *.fastq.gz
+*.fastq*
 
 # Pipeline Output Results
 results/
@@ -14,11 +15,21 @@ results/
 *.fasta
 *.fasta.fai
 
-# Binary trace data & temporary folded stacks (keeps CSVs, HTML flamegraphs, txt reports, and log files)
+# Binary trace data & temporary folded stacks
 logs/*.data
 logs/*.folded
 *.data
 *.folded
+
+# Explicitly allow scripts and unpinned baseline telemetry logs
+!scripts/
+!scripts/**
+!logs/
+!logs/unpinned_baseline/
+!logs/unpinned_baseline/*.csv
+!logs/unpinned_baseline/*.json
+!logs/unpinned_baseline/*.txt
+!logs/unpinned_baseline/*.html
 
 # External / Third-party Cloned Repositories
 scripts/FlameGraph/
