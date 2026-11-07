@@ -101,3 +101,4 @@ bash scripts/run_exp1.sh
 ```
 - Telemetry logged via `scripts/benchmark_runner.py` sampling at 1-second intervals.
 - Output reports: `logs/summary_baseline_1x_*.csv`, `logs/timeseries_baseline_1x_*.csv`.
+

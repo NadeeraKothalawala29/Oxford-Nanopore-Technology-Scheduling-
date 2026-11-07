@@ -22,6 +22,12 @@ All tests were performed on an enterprise multi-socket server testbed:
 ```text
 ├── pipelines/                             # Pipeline architectures & workflow documentation
 │   └── README.md                          # Detailed breakdown of modular and community ONT pipelines
+├── reports/                               # Research-level systems critique reports for each pipeline run
+│   ├── README.md                          # Master cross-run comparative synthesis & index (Runs 1–4)
+│   ├── 01_Run1_20261029_210159_Initial_Baseline_Critique.md
+│   ├── 02_Run2_20261029_212011_Calibrated_16T_Resource_Critique.md
+│   ├── 03_Run3_20261031_122429_Kernel_CFS_FlameGraph_Critique.md
+│   └── 04_Run4_20261102_112000_Unpinned_CFS_NUMA_Critique.md
 ├── scripts/                               # Benchmark runner, GPU wrappers, and scheduler profiling scripts
 │   ├── benchmark_runner.py                # Multi-stage ONT pipeline benchmark runner & telemetry logger
 │   ├── run_exp1.sh                        # Isolated baseline benchmark runner script (Experiment 1)
@@ -49,6 +55,7 @@ All tests were performed on an enterprise multi-socket server testbed:
 > **Note on Data and Code Exclusions**:
 > - Raw sequencing datasets (`.fast5`, `.pod5`, `.fastq`) and large intermediate sequence alignments (`.sam`, `.bam`, `.fasta`) are excluded to keep the repository lightweight.
 > - Third-party Nextflow sub-repositories (`pipelines/*`) are documented in [`pipelines/README.md`](pipelines/README.md).
+> - Research-level stage-by-stage critique reports for all 4 benchmark runs are located in [`reports/`](reports/README.md).
 > - All experimental telemetry, scheduler profiles, memory/NUMA distributions, and execution logs are tracked in [`logs/`](logs/).
 
 ---
